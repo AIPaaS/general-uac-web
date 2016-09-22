@@ -171,7 +171,7 @@
         This example also demonstrates the configuration of an attribute filter
         that only allows for attributes whose length is 3.
         -->
-        <bean class="org.jasig.cas.services.RegexRegisteredService">
+        <bean class="com.ai.opt.sso.service.CustomRegisteredService">
             <property name="id" value="1" />
             <property name="name" value="HTTP and IMAP on example.com" />
             <property name="description" value="Allows HTTP(S) and IMAP(S) protocols on example.com" />

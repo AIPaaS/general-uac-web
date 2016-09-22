@@ -196,7 +196,7 @@
   <bean id="statisticsController" class="org.jasig.cas.web.StatisticsController"
         p:casTicketSuffix="${host.name}" c:ticketRegistry-ref="ticketRegistry" />
 
-  <bean id="logoutAction" class="org.jasig.cas.web.flow.LogoutAction"
+  <bean id="logoutAction" class="com.ai.opt.sso.action.CustomLogoutAction"
         p:servicesManager-ref="servicesManager"
         p:followServiceRedirects="${cas.logout.followServiceRedirects:true}"/>
 
@@ -254,6 +254,5 @@
   <bean id="registerLoginController" class="com.ai.opt.uac.web.controller.common.RegisterAfterLoginController"
 		  p:centralAuthenticationService-ref="centralAuthenticationService"
 		  p:ticketGrantingTicketCookieGenerator-ref="ticketGrantingTicketCookieGenerator"/>
-  <!-- <context:component-scan base-package="com.ai.opt.sso.service"/> -->
-  <context:component-scan base-package="com.ai"/>
+  <context:component-scan base-package="com.ai.opt.sso.service"/>
 </beans>
