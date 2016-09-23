@@ -7,8 +7,8 @@ RUN rm -rf /opt/apache-tomcat-7.0.72/webapps/* && mkdir /opt/apache-tomcat-7.0.7
 COPY ./build/libs/uac.war /opt/apache-tomcat-7.0.72/webapps/ROOT/ROOT.war
 RUN cd /opt/apache-tomcat-7.0.72/webapps/ROOT && jar -xf ROOT.war && rm -rf /opt/apache-tomcat-7.0.72/webapps/ROOT.war
 
-ADD ./script/general-uac-web.sh /general-uac-web.sh
+ADD ./script/start-web.sh /start-web.sh
 RUN chmod 755 /*.sh  
   
 # Define default command.  
-CMD ["/general-uac-web.sh"]
+CMD ["/start-web.sh"]

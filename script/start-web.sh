@@ -1,4 +1,6 @@
 #!/bin/sh
+#env
+APP_NAME="general.uac.web"
 
 #set base home
 RESOURCES_HOME=${CATALINA_HOME}/webapps/ROOT/WEB-INF/classes
@@ -23,10 +25,8 @@ sed -i "s%paas.sdk.mode=.*%paas.sdk.mode=${SDK_MODE}%g" ./paas/paas-conf.propert
 sed -i "s%ccs.appname=.*%ccs.appname=${CCS_NAME}%g" ./paas/paas-conf.properties
 sed -i "s%ccs.zk_address=.*%ccs.zk_address=${ZK_ADDR}%g" ./paas/paas-conf.properties
 
-#sed -i "s%uac.dubbo.registry.address=.*%uac.dubbo.registry.address=${DUBBO_REGISTRY}%g" ./dubbo/dubbo.properties
-#sed -i "s%dubbo.protocol=.*%dubbo.protocol=${DUBBO_PROTOCOL}%g" ./dubbo/dubbo.properties
-#sed -i "s%dubbo.protocol.port=.*%dubbo.protocol.port=${DUBBO_PORT}%g" ./dubbo/dubbo.properties
+#sed -i "s%uac.dubbo.registry.address=.*%uac.dubbo.registry.address=${REST_REGISTRY_ADDR}%g" ./dubbo/dubbo.properties
 popd
 
 
-nohup ${CATALINA_HOME}/bin/catalina.sh run >> /general-uac-web-tomcat.log
+nohup ${CATALINA_HOME}/bin/catalina.sh run >> /${APP_NAME}.log
