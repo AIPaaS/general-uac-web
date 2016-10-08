@@ -86,8 +86,7 @@ public class IPHelper {
 	public static boolean isInnerIP(String ipAddress) {
 		return isInnerIP(ipAddress,null);
 	}
-	
-	public static boolean isInnerIP(String ipAddress,String[] innerDomains) {
+	public static boolean isWhiteList(String ipAddress,String[] whiteList) {
 		boolean isInnerIp = false;
 		boolean isIPFlag = isIP(ipAddress);
 		if (isIPFlag) {
@@ -109,14 +108,47 @@ public class IPHelper {
 				isInnerIp = true;
 			}			
 		}
-		if(innerDomains!=null&&innerDomains.length>0){
-			for(String domain:innerDomains){
+		if(whiteList!=null&&whiteList.length>0){
+			for(String domain:whiteList){
 				if(ipAddress.contains(domain)){
 					isInnerIp=true;
 					break;
 				}
 			}
 		}
+		return isInnerIp;
+	}
+	public static boolean isInnerIP(String ipAddress,String[] innerDomains) {
+		boolean isInnerIp = false;
+		boolean isIPFlag = isIP(ipAddress);
+		if (isIPFlag) {
+			long ipNum = getIpNum(ipAddress);
+			/**
+			 * 私有IP：A类 10.0.0.0-10.255.255.255 B类 172.16.0.0-172.31.255.255 C类
+			 * 192.168.0.0-192.168.255.255 当然，还有127这个网段是环回地址
+			 **/
+			long aBegin = getIpNum("10.0.0.0");
+			long aEnd = getIpNum("10.255.255.255");
+			long bBegin = getIpNum("172.16.0.0");
+			long bEnd = getIpNum("172.31.255.255");
+			long cBegin = getIpNum("192.168.0.0");
+			long cEnd = getIpNum("192.168.255.255");
+			isInnerIp = isInner(ipNum, aBegin, aEnd) || isInner(ipNum, bBegin, bEnd) || isInner(ipNum, cBegin, cEnd)
+					|| ipAddress.equals("127.0.0.1");
+		} else {
+			if ("localhost".equalsIgnoreCase(ipAddress)) {
+				isInnerIp = true;
+			}
+			if(innerDomains!=null&&innerDomains.length>0){
+				for(String domain:innerDomains){
+					if(ipAddress.contains(domain)){
+						isInnerIp=true;
+						break;
+					}
+				}
+			}
+		}
+		
 		return isInnerIp;
 	}
 
@@ -137,7 +169,7 @@ public class IPHelper {
 	
 	public static void main(String[] args) {
 		String[] innerDomains=new String[]{"changhong.com" ,"111.9.116.181","111.9.116.182","111.9.116.183"};
-		System.out.println(IPHelper.isInnerIP("111.9.116.181", innerDomains));
+		System.out.println(IPHelper.isWhiteList("111.9.116.181", innerDomains));
 	}
 
 }

@@ -49,7 +49,7 @@ public class CustomRegisteredService extends RegexRegisteredService{
                     host = host.substring(0,host.indexOf(":"));
                 }
                 LOG.error("service=["+service.getId()+"]中的host部分为："+host);
-                if(IPHelper.isInnerIP(host,whiteList)){
+                if(IPHelper.isWhiteList(host,whiteList)){
                     LOG.error("service=["+service.getId()+"]认证通过");
                     return true;
                 }
