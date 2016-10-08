@@ -107,13 +107,13 @@ public class IPHelper {
 		} else {
 			if ("localhost".equalsIgnoreCase(ipAddress)) {
 				isInnerIp = true;
-			}
-			if(innerDomains!=null&&innerDomains.length>0){
-				for(String domain:innerDomains){
-					if(ipAddress.contains(domain)){
-						isInnerIp=true;
-						break;
-					}
+			}			
+		}
+		if(innerDomains!=null&&innerDomains.length>0){
+			for(String domain:innerDomains){
+				if(ipAddress.contains(domain)){
+					isInnerIp=true;
+					break;
 				}
 			}
 		}
@@ -133,6 +133,11 @@ public class IPHelper {
 
 	private static boolean isInner(long userIp, long begin, long end) {
 		return (userIp >= begin) && (userIp <= end);
+	}
+	
+	public static void main(String[] args) {
+		String[] innerDomains=new String[]{"changhong.com" ,"111.9.116.181","111.9.116.182","111.9.116.183"};
+		System.out.println(IPHelper.isInnerIP("111.9.116.181", innerDomains));
 	}
 
 }
