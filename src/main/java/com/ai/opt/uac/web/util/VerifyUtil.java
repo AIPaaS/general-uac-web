@@ -79,7 +79,7 @@ public class VerifyUtil {
 	        g.dispose();
 
 		}catch(Exception e){
-		    e.printStackTrace();
+		    LOGGER.info(e.getMessage());
 		}
 		 return image;
 	}
@@ -97,7 +97,7 @@ public class VerifyUtil {
 			EmailFactory.SendEmail(emailRequest.getTomails(), emailRequest.getCcmails(), emailRequest.getSubject(), htmlcontext);
 		} catch (Exception e) {
 			success = false;
-			e.printStackTrace();
+			LOGGER.info(e.getMessage());
 		}
 		return success;
 	}
@@ -115,7 +115,7 @@ public class VerifyUtil {
 			smsService.dataInput(smDataInfoNotify);
 		} catch (Exception e) {
 			isSuccess = false;
-			e.printStackTrace();
+			LOGGER.info(e.getMessage());
 		}
 		return isSuccess;
 	}
@@ -234,7 +234,7 @@ public class VerifyUtil {
 	        responseData.setResponseHeader(header);
 	        return responseData;  
 		}catch(Exception e){
-		   e.printStackTrace(); 
+		   LOGGER.info(e.getMessage()); 
 		}
 		 return responseData;  
 	}
@@ -278,7 +278,7 @@ public class VerifyUtil {
 	        responseData.setResponseHeader(header);
 	        return responseData;
 		}catch(Exception e){
-		    e.printStackTrace();
+		    LOGGER.info(e.getMessage());
 		}
 		 return responseData;
 	}

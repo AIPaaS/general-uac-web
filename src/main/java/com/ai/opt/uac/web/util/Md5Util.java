@@ -11,6 +11,7 @@ import java.security.NoSuchAlgorithmException;
  * @author zhanglh
  */
 public final class Md5Util {
+	private static String MD5="MD5";
     private Md5Util() {
     }
 
@@ -26,7 +27,7 @@ public final class Md5Util {
         try {
 
             // 拿到一个MD5转换器（如果想要SHA1参数换成”SHA1”）
-            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            MessageDigest messageDigest = MessageDigest.getInstance(MD5);
             // 输入的字符串转换成字节数组
             byte[] inputByteArray = pw.getBytes();
             // inputByteArray是输入字符串转换得到的字节数组
