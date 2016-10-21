@@ -37,6 +37,7 @@ public class IConfigCenterClientTest {
      * @throws ConfigException
      * @author gucl
      */
+    @Ignore
     @Test
     public void addServiceIdPwdMap() throws ConfigException {
         String cachesnsConfig = "{\"MCS009\":\"" + "123456\""
@@ -56,7 +57,7 @@ public class IConfigCenterClientTest {
      * DB配置
      * @throws ConfigException 
      */
-    //@Ignore
+    @Ignore
      @Test
     public void addDbConfInfo() throws ConfigException {
         System.out.println("DBConf config ... start");
@@ -93,7 +94,7 @@ public class IConfigCenterClientTest {
      }
  
 
-    //@Ignore
+     @Ignore
     @Test
     public void addMcsConfig() throws ConfigException {
         // 缓存服务主机
@@ -148,7 +149,7 @@ public class IConfigCenterClientTest {
                     cachesnsConfig);
         }
     }
-    
+     @Ignore
      @Test
      public void addUrlConfig() throws ConfigException{
     	 System.out.println("url config ... start");
@@ -161,6 +162,7 @@ public class IConfigCenterClientTest {
     	 
     	 System.out.println("url config ... end");
      }
+     @Ignore
      @Test
      public void readUrlConfig() throws ConfigException{
     	 System.out.println("url config ... read start");
@@ -173,6 +175,7 @@ public class IConfigCenterClientTest {
     	 System.out.println("url config ... read end");
      }
      
+     @Ignore
      @Test
      public void addSendVerifyTimesConfig() throws ConfigException{
     	 System.out.println("addSendVerifyTimesConfig ... start");
@@ -236,6 +239,7 @@ public class IConfigCenterClientTest {
     	 System.out.println("addSendVerifyTimesConfig ... end");
      }
      
+     @Ignore
      @Test
      public void addDssConfig() throws ConfigException {
          // 缓存服务主机
