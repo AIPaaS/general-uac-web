@@ -60,7 +60,7 @@ function resetErrMsg(){
 function validate() {
 	var username=document.getElementById("username").value;
 	var password=document.getElementById("password").value;
-	//var captcha=document.getElementById("captchaCode").value;
+	var captcha=document.getElementById("captchaCode").value;
 	try {
 		if (isNull(username)) {
 			showErrMsg("请输入手机号码或邮箱地址");
@@ -74,14 +74,13 @@ function validate() {
 		}else{
 			resetErrMsg();
 		}
-		/*
 		if (isNull(captcha)) {
 			showErrMsg("请输入验证码");
 			return false;
 		}else{
 			resetErrMsg();
 		}
-		*/
+		
 		return true;
 	} catch (ex) {
 		return false;

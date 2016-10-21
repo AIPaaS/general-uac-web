@@ -38,7 +38,7 @@
 								         <li class="login-title">账户登录</li>
 								         <li class="user"><i class="fa fa-user"></i><form:input cssClass="int-text int-large int-height" cssErrorClass="error" id="username" tabindex="1" accesskey="${userNameAccessKey}" path="username" autocomplete="off" htmlEscape="true" placeholder="登录名/公司邮箱/手机号"/></li>
 								         <li class="password"><i class="fa fa-lock"></i><form:password  cssClass="int-text int-large int-height" cssErrorClass="error" id="password" size="25" tabindex="2" path="password"  accesskey="${passwordAccessKey}" htmlEscape="true" autocomplete="off"  placeholder="密码" onkeydown="encryptPwd(event)"/></li>
-								         <%-- <li>
+								         <li>
 								         	<p class="yzm">
 								         		<input type="text" class="int-text int-medium int-height" id="captchaCode" 	
 													tabindex="3" name="captchaCode" path="captchaCode" onkeydown="encryptCaptcha(event)"
@@ -47,7 +47,7 @@
 								         	<p class="yzn-t">
 								         		<img title="点击重新获取验证码" style="vertical-align: middle;"	src="${_base}/captcha/getImageVerifyCode" id="pictureVitenfy" onclick="reloadImage('${_base}/captcha/getImageVerifyCode');">
 								         	</p>
-								         </li> --%>
+								         </li>
 								         <li style="display:none;">
 											<input id="rememberMe" name="rememberMe" type="checkbox" >
 										 </li>

@@ -46,7 +46,7 @@ import com.ai.opt.uac.web.constants.Constants.Register;
 import com.ai.paas.ipaas.mcs.interfaces.ICacheClient;
 import com.ai.paas.ipaas.util.StringUtil;
 
-public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostProcessingAuthenticationHandler{
+public final class BssCredentialsAuthencationHandlerChTest extends AbstractPreAndPostProcessingAuthenticationHandler{
 
 	@Resource
 	private LoadAccountService loadAccountService;
@@ -63,7 +63,7 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
 	public void setLoadAccountService(LoadAccountService loadAccountService) {
 		this.loadAccountService = loadAccountService;
 	}
-	public BssCredentialsAuthencationHandler(){
+	public BssCredentialsAuthencationHandlerChTest(){
 		this.passwordEncoder = new PlainTextPasswordEncoder();
 		this.principalNameTransformer = new NoOpPrincipalNameTransformer();
 	}
@@ -83,7 +83,7 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
 		BssCredentials bssCredentials = (BssCredentials) credentials;
 		final String username = bssCredentials.getUsername();
 		final String pwdFromPage = bssCredentials.getPassword();
-		/*final String captchaCode = bssCredentials.getCaptchaCode().toLowerCase();*/
+		final String captchaCode = bssCredentials.getCaptchaCode().toLowerCase();
 	    final String sessionId = bssCredentials.getSessionId();
 		//用户名非空校验
 		if(!StringUtils.hasText(username)){
@@ -97,7 +97,7 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
 		}
 		
 		
-		/* // 验证码非空校验
+		 // 验证码非空校验
         if (!StringUtils.hasText(captchaCode)) {
             logger.error("请输入验证码");
             throw new CaptchaIsNullException();
@@ -114,7 +114,7 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
         // 校验验证码
         if (!cookieCaptcha.equals(bssCredentials.getCaptchaCode().toLowerCase())) {
             throw new CaptchaErrorException();
-        }*/
+        }
 		
 		
 		UserLoginResponse user = null;
