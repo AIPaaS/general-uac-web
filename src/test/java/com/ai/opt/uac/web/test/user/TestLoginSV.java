@@ -21,14 +21,14 @@ public class TestLoginSV {
 	@Autowired
 	ILoginSV iLoginSV;
 	
-	//@Ignore
+	@Ignore
 	@Test
     public void testSSO() throws RPCSystemException{
         String name = "thinkgem";
         UserLoginResponse info = iLoginSV.queryUserByUserName(name);
         System.out.println("result="+JSON.toJSONString(info));
     }
-	
+	@Ignore
 	@Test
     public void testSSOa() throws RPCSystemException{
         String name = "123456";

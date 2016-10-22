@@ -19,7 +19,7 @@ public class mcsTest {
         this.cacheClient = MCSClientFactory.getCacheClient(
                 namespace);
     }
-    //@Ignore
+    @Ignore
     @Test
     public void addCache() {
         cacheClient.set("testKey", "testValue");

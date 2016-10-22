@@ -20,7 +20,7 @@ public class TestUserQuerySV {
 
 	@Autowired
 	IUserQuerySV iUserQuerySV;
-	//@Ignore
+	@Ignore
 	@Test
 	public void testQueryBaseInfo() throws RPCSystemException{
 		System.out.println("<<<<<<<<<<<<<<Begin testQueryBaseInfo>>>>>>>>>>>>>>");
