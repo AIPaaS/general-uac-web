@@ -129,6 +129,7 @@
     <transition on="SystemBusyException" to="generateLoginTicket"/>
     <transition on="CredentialException" to="generateLoginTicket"/>
     <transition on="TenantIdIsNullException" to="generateLoginTicket"/>
+    <transition on="AccountNotAllowLoginException" to="generateLoginTicket"/>
     
     <transition on="CaptchaOutTimeException" to="generateLoginTicket"/>
     <transition on="CaptchaIsNullException" to="generateLoginTicket"/>

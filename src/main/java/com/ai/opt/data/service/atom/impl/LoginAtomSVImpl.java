@@ -32,10 +32,11 @@ public class LoginAtomSVImpl implements ILoginAtomSV {
             criteria.andLoginNameEqualTo(user.getLoginName());
         }
         // 登录标记为1
-        criteria.andLoginFlagEqualTo("1");
+//        criteria.andLoginFlagEqualTo("1");
         // 删除标记为0
         criteria.andDelFlagEqualTo("0");
         SysUserMapper sysUserMapper = MapperFactory.getSysUserMapper();
+       
         List<SysUser> list = sysUserMapper.selectByExample(conditon);
         if (!CollectionUtil.isEmpty(list)) {
             return list.get(0);

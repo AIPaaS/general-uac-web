@@ -63,7 +63,7 @@ function validate() {
 	var captcha=document.getElementById("captchaCode").value;
 	try {
 		if (isNull(username)) {
-			showErrMsg("请输入手机号码或邮箱地址");
+			showErrMsg("请输入用户名");
 			return false;
 		}else{
 			resetErrMsg();

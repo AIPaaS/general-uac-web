@@ -121,6 +121,12 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
 		try {
 			
 			user = loadAccountService.loadAccount(bssCredentials);
+			System.out.println("loginflag====="+user.getLoginFlag());
+			 if(SSOConstants.ACCOUNT_LOGIN_FLAG.equals(user.getLoginFlag())){
+					//账号不允许登录
+					logger.error("账号不允许登录");
+					throw new AccountNotAllowLoginException();
+				}
 			if(user == null||StringUtil.isBlank(user.getUserId())){
 				if(RegexUtils.checkIsPhone(bssCredentials.getUsername())){
 					logger.error("手机号码未注册");
@@ -129,22 +135,22 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
 				else if(RegexUtils.checkIsEmail(bssCredentials.getUsername())){
 					logger.error("邮箱未绑定");
 					throw new EmailNotExistException();
+				}else if(SSOConstants.ACCOUNT_LOGIN_FLAG.equals(user.getLoginFlag())){
+					//账号不允许登录
+					logger.error("账号不允许登录");
+					throw new AccountNotAllowLoginException();
+				}
+				else if(SSOConstants.ACCOUNT_DEL_FLAG.equals(user.getDelFlag())){
+					//账号已删除
+					logger.error("账号已删除");
+					throw new AccountNameNotExistException();
 				}
 				else{
 					logger.error("账号未注册");
 					throw new AccountNameNotExistException();
 				}
 			}
-			if(SSOConstants.ACCOUNT_LOGIN_FLAG.equals(user.getLoginFlag())){
-				//账号不允许登录
-				logger.error("账号不允许登录");
-				throw new AccountNotAllowLoginException();
-			}
-			if(SSOConstants.ACCOUNT_DEL_FLAG.equals(user.getDelFlag())){
-				//账号已删除
-				logger.error("账号已删除");
-				throw new AccountNameNotExistException();
-			}
+			
 			
 			String dbPwd=user.getLoginPassword();
 			logger.info("【dbPwd】="+dbPwd);
@@ -184,6 +190,9 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
 		catch (RPCSystemException e) {
 			logger.error("调用查询账户服务（Dubbo）失败",e);
 			throw new CredentialException("系统错误");
+		}catch(AccountNotAllowLoginException e){
+			logger.error("该用户被冻结",e);
+			throw new AccountNotAllowLoginException();
 		}
 		catch (Exception e) {
 			logger.error("系统异常",e);
