@@ -1,4 +1,11 @@
 $(function(){
+	if (self != top) {  
+	    var messenger = new Messenger('mainFrame', 'MgmtMessage'),
+	    input = document.getElementById('message');
+		messenger.addTarget(window.parent, 'parent');
+		sendMessage();
+		function sendMessage() {messenger.targets['parent'].send("caslogin"); }}
+	
 	var errors=$("#errorMsg").html();
 	if(isNull(errors)){
 		resetErrMsg();

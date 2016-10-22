@@ -18,20 +18,12 @@
     <meta name="viewport" content="width=device-width; initial-scale=0.8;  user-scalable=0;" />
     <title>长虹UP物联网单点登录</title>
 	<script type="text/javascript" src="${_baasBase }/js/datacheck.js" ></script>
+	<script language="javascript" src="${pageContext.request.contextPath}/resources/spm_modules/app/login/messenger.js"></script>  
 	<script language="javascript" src="${pageContext.request.contextPath}/resources/spm_modules/app/login/casLoginView.js"></script>  
-	<script type="text/javascript">
- 
-	 function loadTopWindow()
-	 { 
- 		if (window.top!=null && window.top.document.URL!=document.URL)
- 		{ 
- 		window.top.location= document.URL; 
- 		}
-  	} 
-  </script>
+
 </head>
 
-<body onload="loadTopWindow()">
+<body>
 <%@include file="/inc/head.jsp" %>
 	
 <div class="container login-bj">

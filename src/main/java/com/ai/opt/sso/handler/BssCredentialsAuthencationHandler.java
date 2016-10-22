@@ -121,7 +121,7 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
 		try {
 			
 			user = loadAccountService.loadAccount(bssCredentials);
-			System.out.println("loginflag====="+user.getLoginFlag());
+			
 			 if(SSOConstants.ACCOUNT_LOGIN_FLAG.equals(user.getLoginFlag())){
 					//账号不允许登录
 					logger.error("账号不允许登录");
