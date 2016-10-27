@@ -119,9 +119,12 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
 		
 		UserLoginResponse user = null;
 		try {
-			
+			long dubboStart=System.currentTimeMillis();
+			logger.error("====开始执行doAuthentication中的loadAccountService.loadAccount服务，当前时间戳："+dubboStart);
 			user = loadAccountService.loadAccount(bssCredentials);
-			
+			long dubboEnd=System.currentTimeMillis();
+			logger.error("====完成执行doAuthentication中的loadAccountService.loadAccount服务，当前时间戳："+dubboEnd+",用时:"+(dubboEnd-dubboStart)+"毫秒");
+	    	
 			 if(SSOConstants.ACCOUNT_LOGIN_FLAG.equals(user.getLoginFlag())){
 					//账号不允许登录
 					logger.error("账号不允许登录");
