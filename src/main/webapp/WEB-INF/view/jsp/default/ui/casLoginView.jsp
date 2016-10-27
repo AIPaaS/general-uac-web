@@ -14,7 +14,7 @@
 <%@ include file="/inc/inc.jsp"%>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="${_baasBase }/images/citic.ico">
+    <%-- <link rel="shortcut icon" href="${_baasBase }/images/citic.ico"> --%>
     <meta name="viewport" content="width=device-width; initial-scale=0.8;  user-scalable=0;" />
     <title>长虹UP物联网单点登录</title>
 	<script type="text/javascript" src="${_baasBase }/js/datacheck.js" ></script>
