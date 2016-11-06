@@ -194,7 +194,7 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
 			logger.error("调用查询账户服务（Dubbo）失败",e);
 			throw new CredentialException("系统错误");
 		}catch(AccountNotAllowLoginException e){
-			logger.error("该用户被冻结",e);
+			logger.error("该用户已被冻结",e);
 			throw new AccountNotAllowLoginException();
 		}
 		catch (Exception e) {
