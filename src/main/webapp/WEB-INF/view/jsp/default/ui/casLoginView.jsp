@@ -43,16 +43,16 @@
 								         	<p class="yzm">
 								         		<input type="text" class="int-text int-medium int-height" id="captchaCode" 	
 													tabindex="3" name="captchaCode" path="captchaCode" onkeydown="encryptCaptcha(event)"
-													placeholder="验证码"> 
+													placeholder="验证码"/> 
 								         	</p>
 								         	<p class="yzn-t">
-								         		<img title="点击重新获取验证码" style="vertical-align: middle;"	src="${_base}/captcha/getImageVerifyCode" id="pictureVitenfy" onclick="reloadImage('${_base}/captcha/getImageVerifyCode');">
+								         		<img title="点击重新获取验证码" style="vertical-align: middle;"	src="${_base}/captcha/getImageVerifyCode" id="pictureVitenfy" onclick="reloadImage('${_base}/captcha/getImageVerifyCode');"/>
 								         	</p>
 								         </li>
 								         <li style="display:none;">
-											<input id="rememberMe" name="rememberMe" type="checkbox" >
+											<input id="rememberMe" name="rememberMe" type="checkbox"/>
 										 </li>
-								         <li><input type="button" class="login-btn" value="登 录" accesskey="l" tabindex="4" onclick="javascript:dologin();"> </li> 
+								         <li><input type="button" class="login-btn" value="登 录" accesskey="l" tabindex="4" onclick="javascript:dologin();"/> </li> 
 								        <!--  <li class="Forget-password"><a href="#">忘记密码？</a><a href="#" class="right">立即注册</a></li> -->
 								         </ul>
 		
