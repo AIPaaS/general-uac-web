@@ -37,7 +37,7 @@
 								         <ul>
 								         <div class="login-note" id="errorMsg"><form:errors path="*" id="msg" cssClass="errors" element="div" htmlEscape="false" /></div>
 								         <li class="login-title">账户登录</li>
-								         <li class="user"><i class="fa fa-user"></i><form:input cssClass="int-text int-large int-height" cssErrorClass="error" id="username" tabindex="1" accesskey="${userNameAccessKey}" path="username" autocomplete="off" htmlEscape="true" placeholder="登录名/手机号／邮箱""/></li>
+								         <li class="user"><i class="fa fa-user"></i><form:input cssClass="int-text int-large int-height" cssErrorClass="error" id="username" tabindex="1" accesskey="${userNameAccessKey}" path="username" autocomplete="off" htmlEscape="true" placeholder="登录名/手机号／邮箱"/></li>
 								         <li class="password"><i class="fa fa-lock"></i><form:password  cssClass="int-text int-large int-height" cssErrorClass="error" id="password" size="25" tabindex="2" path="password"  accesskey="${passwordAccessKey}" htmlEscape="true" autocomplete="off"  placeholder="密码" onkeydown="encryptPwd(event)"/></li>
 								         <li>
 								         	<p class="yzm">
