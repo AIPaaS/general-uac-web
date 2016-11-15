@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.security.auth.login.CredentialException;
+import javax.security.auth.login.CredentialExpiredException;
 import javax.security.auth.login.LoginException;
 import javax.validation.constraints.NotNull;
 
@@ -172,10 +173,10 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
 			Date acitveDate=user.getEffectiveDate();
 			Date inactiveDate=user.getExpiryDate();
 			if(acitveDate!=null&&currentDate.before(acitveDate)){
-				throw new CredentialException("账号未生效");
+				throw new CredentialExpiredException("账号未生效");
 			}
 			if(inactiveDate!=null&&inactiveDate.before(currentDate)){
-				throw new CredentialException("账号已失效");
+				throw new CredentialExpiredException("账号已失效");
 			}
 			
 			//BeanUtils.copyProperties(bssCredentials, user);
@@ -196,9 +197,9 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
 		}catch(AccountNotAllowLoginException e){
 			logger.error("该用户已被冻结",e);
 			throw new AccountNotAllowLoginException();
-		}catch(CredentialException e){
+		}catch(CredentialExpiredException e){
 			logger.error("该用户已被冻结",e);
-			throw new CredentialException();
+			throw new CredentialExpiredException();
 		}
 		catch (Exception e) {
 			logger.error("系统异常",e);
