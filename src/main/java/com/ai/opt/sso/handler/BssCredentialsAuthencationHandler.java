@@ -196,6 +196,9 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
 		}catch(AccountNotAllowLoginException e){
 			logger.error("该用户已被冻结",e);
 			throw new AccountNotAllowLoginException();
+		}catch(CredentialException e){
+			logger.error("该用户已被冻结",e);
+			throw new CredentialException();
 		}
 		catch (Exception e) {
 			logger.error("系统异常",e);
