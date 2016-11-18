@@ -122,7 +122,6 @@
 		SELECT
 		 <include refid="Base_Column_List" />
 		FROM sys_user a
-		
 		WHERE (a.login_name = #{loginName} || a.email = #{loginName} || a.mobile = #{loginName}) AND a.del_flag = 0}
   </select>
   
