@@ -4,6 +4,6 @@ import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.data.dao.mapper.bo.SysUser;
 
 public interface ILoginBusiSV {
-    SysUser queryByUserName(SysUser user) throws BusinessException;
+    SysUser queryByUserName( String loginName) throws BusinessException;
     
 }

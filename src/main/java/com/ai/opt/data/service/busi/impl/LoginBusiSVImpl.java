@@ -16,9 +16,9 @@ public class LoginBusiSVImpl implements ILoginBusiSV {
     ILoginAtomSV iLoginAtomSV;
 
     @Override
-    public SysUser queryByUserName(SysUser user) throws BusinessException {
+    public SysUser queryByUserName(String loginName) throws BusinessException {
 
-        return iLoginAtomSV.queryByUserName(user);
+        return iLoginAtomSV.queryByUserName(loginName);
 
     }
 

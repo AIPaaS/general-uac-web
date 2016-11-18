@@ -17,8 +17,9 @@ public interface SysUserMapper {
     int insert(SysUser record);
 
     int insertSelective(SysUser record);
-
-    List<SysUser> selectByExample(SysUserCriteria example);
+    
+    List<SysUser> getByLoginName(String loginName);
+    List<SysUser> selectByExample(String loginName);
 
     SysUser selectByPrimaryKey(String id);
 

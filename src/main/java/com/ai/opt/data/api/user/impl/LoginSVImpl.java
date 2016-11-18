@@ -28,18 +28,18 @@ public class LoginSVImpl implements ILoginSV {
     public UserLoginResponse queryUserByUserName(String username)
             throws BusinessException,SystemException {
         iVoValidateSV.validateLogin(username);
-        // 判断用户名是手机还是邮箱
-        boolean isEmial = RegexUtils.checkIsEmail(username);
-        boolean isPhone = RegexUtils.checkIsPhone(username);
-        SysUser account = new SysUser();
-        if (isPhone == true) {
-            account.setMobile(username);
-        }else if (isEmial == true) {
-            account.setEmail(username);
-        }else{
-            account.setLoginName(username); 
-        }
-        SysUser sysUser = iLoginBusiSV.queryByUserName(account);
+//        // 判断用户名是手机还是邮箱
+//        boolean isEmial = RegexUtils.checkIsEmail(username);
+//        boolean isPhone = RegexUtils.checkIsPhone(username);
+//        SysUser account = new SysUser();
+//        if (isPhone == true) {
+//            account.setMobile(username);
+//        }else if (isEmial == true) {
+//            account.setEmail(username);
+//        }else{
+//            account.setLoginName(username); 
+//        }
+        SysUser sysUser = iLoginBusiSV.queryByUserName(username);
         // 组织返回对象
         UserLoginResponse response = new UserLoginResponse();
         if (sysUser != null) {
