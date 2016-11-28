@@ -30,7 +30,7 @@
     </bean>
 
     <!-- 配置数据源 -->
-    <bean id="dataSource" class="com.ai.opt.sdk.datasource.OptHikariDataSource">
+    <bean id="dataSource" class="com.ai.opt.sdk.datasource.OptHikariDataSource" lazy-init="false">
 		 <constructor-arg name="dataSourceName" value="aiplatform-db"/>
 	</bean>
     <!-- <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">

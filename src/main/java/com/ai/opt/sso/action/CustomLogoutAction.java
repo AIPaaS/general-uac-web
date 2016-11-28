@@ -50,7 +50,7 @@ public class CustomLogoutAction extends AbstractLogoutAction{
 
         final String service = request.getParameter("service");
         if (this.followServiceRedirects && service != null) {
-            final RegisteredService rService = this.servicesManager.findServiceBy(new SimpleWebApplicationServiceImpl(service));
+            final RegisteredService rService = this.servicesManager.findServiceBy(SimpleWebApplicationServiceImpl.createServiceFrom(request));
 
             if (rService != null && rService.isEnabled()) {
                 context.getFlowScope().put("logoutRedirectUrl", service);
