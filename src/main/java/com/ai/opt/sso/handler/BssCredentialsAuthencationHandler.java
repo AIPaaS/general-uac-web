@@ -126,7 +126,7 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
 			long dubboEnd=System.currentTimeMillis();
 			logger.error("====完成执行doAuthentication中的loadAccountService.loadAccount服务，当前时间戳："+dubboEnd+",用时:"+(dubboEnd-dubboStart)+"毫秒");
 	    	
-			 if(SSOConstants.ACCOUNT_LOGIN_FLAG.equals(user.getLoginFlag())){
+			 if(user != null && SSOConstants.ACCOUNT_LOGIN_FLAG.equals(user.getLoginFlag())){
 					//账号不允许登录
 					logger.error("账号不允许登录");
 					throw new AccountNotAllowLoginException();
@@ -139,12 +139,12 @@ public final class BssCredentialsAuthencationHandler extends AbstractPreAndPostP
 				else if(RegexUtils.checkIsEmail(bssCredentials.getUsername())){
 					logger.error("邮箱未绑定");
 					throw new EmailNotExistException();
-				}else if(SSOConstants.ACCOUNT_LOGIN_FLAG.equals(user.getLoginFlag())){
+				}else if(user != null &&SSOConstants.ACCOUNT_LOGIN_FLAG.equals(user.getLoginFlag())){
 					//账号不允许登录
 					logger.error("账号不允许登录");
 					throw new AccountNotAllowLoginException();
 				}
-				else if(SSOConstants.ACCOUNT_DEL_FLAG.equals(user.getDelFlag())){
+				else if(user != null &&SSOConstants.ACCOUNT_DEL_FLAG.equals(user.getDelFlag())){
 					//账号已删除
 					logger.error("账号已删除");
 					throw new AccountNameNotExistException();
