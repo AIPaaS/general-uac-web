@@ -26,7 +26,8 @@ public class CustomRegisteredService extends RegexRegisteredService{
         try {
             Properties properties = new Properties();
             ClassLoader loader = CustomRegisteredService.class.getClassLoader();
-            properties.load(loader.getResourceAsStream("whitelist.properties"));
+            if(loader != null)
+            	properties.load(loader.getResourceAsStream("whitelist.properties"));
             String whiteList1 = properties.getProperty("whiteList");
             if(!StringUtil.isBlank(whiteList1)){
                 whiteList = whiteList1.split(",");

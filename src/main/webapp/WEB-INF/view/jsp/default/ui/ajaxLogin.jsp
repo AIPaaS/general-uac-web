@@ -11,7 +11,7 @@
                 String serviceUrl=(String)request.getAttribute("serviceUrl");
                 String ticket=(String)request.getAttribute("ticket");
                 String redircetUrl="";
-                if(!serviceUrl.contains("?")){
+                if(serviceUrl != null&&!serviceUrl.contains("?")){
                 	redircetUrl=serviceUrl+"?ticket="+ticket;                	
                 }
                 else{
