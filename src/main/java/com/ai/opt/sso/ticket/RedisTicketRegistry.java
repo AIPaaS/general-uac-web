@@ -15,8 +15,7 @@ public class RedisTicketRegistry extends AbstractDistributedTicketRegistry {
 	private static final Logger LOG = LoggerFactory.getLogger(RedisTicketRegistry.class);
 	private static final int TGT_TIME = 43200000; // TGT最大空闲时间 12小时
 
-	//2017-01-07 gucl修改：之前为5分钟，改为和TGT_TIME一样，12小时
-	private static final int ST_TIME = 43200000; // ST最大空闲时间
+	private static final int ST_TIME = 300000; // ST最大空闲时间 5分钟
 
 	private static final  String TICKECKKEY = "SSO-";
 	
