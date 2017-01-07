@@ -3,14 +3,15 @@ package com.ai.opt.sso.ticket;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.ai.opt.sso.unicache.UniCache;
 import com.ai.opt.sso.util.SerializeUtil;
 import com.ai.paas.ipaas.mcs.interfaces.ICacheClient;
 
 public final class CommonService {
-	private static final Logger LOG = Logger.getLogger(CommonService.class);
+	private static final Logger LOG = LoggerFactory.getLogger(CommonService.class);
 	private static final String CHARSET = "UTF-8";
 	private static CommonService instance;
 	private CommonService(){}
@@ -33,7 +34,7 @@ public final class CommonService {
 			byte[] data = getCache().get(key.getBytes(CHARSET));
 			val = SerializeUtil.unserialize(data);
 		} catch (Exception e) {
-			LOG.error("获取 obj 失败",e);
+			LOG.error("===CommonService.getValue 获取 obj 失败,具体原因："+e.getMessage(),e);
 		}
 		return val;
 	}
@@ -42,7 +43,7 @@ public final class CommonService {
 		try {
 			getCache().del(key.getBytes(CHARSET));
 		} catch (UnsupportedEncodingException e) {
-			LOG.error("删除 obj 失败",e);
+			LOG.error("===CommonService.removeObj 删除 obj 失败,具体原因："+e.getMessage(),e);
 		}
 	}
 
@@ -51,8 +52,8 @@ public final class CommonService {
 		try {
 			getCache().set(key.getBytes(CHARSET), SerializeUtil.serialize(obj));
 			getCache().expire(key.getBytes(CHARSET), maxInactiveInterval);
-		} catch (IOException e) {
-			LOG.error("obj 保存至redis异常",e);
+		} catch (Exception e) {
+			LOG.error("---CommonService.saveObj("+key+","+obj+","+maxInactiveInterval+") 保存至redis异常,具体原因："+e.getMessage(),e);
 		}
 	}
 
@@ -60,7 +61,7 @@ public final class CommonService {
 		try {
 			getCache().set(key.getBytes(CHARSET), SerializeUtil.serialize(ticketId));
 		} catch (IOException e) {
-			LOG.error("obj 保存至redis异常：",e);
+			LOG.error("---CommonService.saveObj 保存至redis异常,具体原因："+e.getMessage(),e);
 		}
 	}
 }
